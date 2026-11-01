@@ -2,7 +2,7 @@
 
 A full-stack travel journal. Sign up, publish diaries with a photo and location, and browse what other travelers have shared. The interface is intentionally quiet: a neutral palette, thin borders, no gradients.
 
-Built with **TypeScript 7**, **React 19**, **Material UI 9**, **Redux Toolkit**, **Express 5**, **MongoDB (Mongoose 9)** and **Docker**.
+Built with **TypeScript**, **React 19**, **Material UI 9**, **Redux Toolkit**, **Express 5**, **MongoDB (Mongoose 9)** and **Docker**.
 
 ## Pages
 
