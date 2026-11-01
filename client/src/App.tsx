@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 
 import Header from "./components/Header.tsx";
 import Home from "./pages/Home.tsx";
+import Auth from "./pages/Auth.tsx";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Box component="main">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Box>
