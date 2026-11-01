@@ -1,0 +1,27 @@
+{
+  "name": "travel-diaries",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack TypeScript travel blogging and journaling platform",
+  "scripts": {
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build:server": "npm --prefix server run build",
+    "build:client": "npm --prefix client run build",
+    "test:server": "npm --prefix server test",
+    "test:client": "npm --prefix client test",
+    "typecheck": "npm --prefix server run typecheck && npm --prefix client run typecheck",
+    "lint": "npm --prefix client run lint && npm --prefix server run lint"
+  },
+  "keywords": [
+    "typescript",
+    "react",
+    "material-ui",
+    "redux",
+    "express",
+    "mongodb",
+    "fullstack"
+  ],
+  "author": "savelii-prysiazhnyi-dev <savelii.prysiazhnyi.dev@gmail.com>",
+  "license": "MIT"
+}
