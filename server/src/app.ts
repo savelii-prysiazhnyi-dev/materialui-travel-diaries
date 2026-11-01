@@ -1,5 +1,6 @@
 import express, { type Request, type Response } from "express";
 import cors from "cors";
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 
@@ -15,5 +16,7 @@ app.get("/api/health", (_req: Request, res: Response) => {
     uptime: process.uptime()
   });
 });
+
+app.use("/api/user", userRoutes);
 
 export default app;
