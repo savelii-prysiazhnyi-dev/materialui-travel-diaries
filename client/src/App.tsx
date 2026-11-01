@@ -8,6 +8,7 @@ import Auth from "./pages/Auth.tsx";
 import Diaries from "./pages/Diaries.tsx";
 import Add from "./pages/Add.tsx";
 import DiaryUpdate from "./pages/DiaryUpdate.tsx";
+import Profile from "./pages/Profile.tsx";
 import { useAppSelector } from "./store/index.ts";
 
 const RequireAuth = ({ children }: { children: ReactNode }) => {
@@ -29,6 +30,14 @@ const App = () => {
             element={
               <RequireAuth>
                 <Add />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <RequireAuth>
+                <Profile />
               </RequireAuth>
             }
           />
