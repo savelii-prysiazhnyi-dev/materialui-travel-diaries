@@ -2,16 +2,32 @@
   "name": "travel-diaries",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Full-stack TypeScript travel blogging and journaling platform",
   "scripts": {
     "dev:server": "npm --prefix server run dev",
     "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
     "build:server": "npm --prefix server run build",
     "build:client": "npm --prefix client run build",
     "test:server": "npm --prefix server test",
     "test:client": "npm --prefix client test",
     "typecheck": "npm --prefix server run typecheck && npm --prefix client run typecheck",
     "lint": "npm --prefix client run lint && npm --prefix server run lint"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "mongoose": "^9.11.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
   },
   "keywords": [
     "typescript",

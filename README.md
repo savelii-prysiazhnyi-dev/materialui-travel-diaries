@@ -21,6 +21,8 @@ The header navigation shows **Home · Diaries · Sign in** for guests and **Home
 
 ```text
 travel-diaries/
+├── api/
+│   └── index.ts                 # Vercel serverless function entry point
 ├── client/
 │   ├── public/hero.jpg          # Landing page image
 │   └── src/
@@ -34,14 +36,15 @@ travel-diaries/
 │       └── main.tsx
 ├── server/
 │   ├── src/
-│   │   ├── config/db.ts         # MongoDB connection
+│   │   ├── config/db.ts         # MongoDB connection with serverless pool caching
 │   │   ├── controllers/         # userController, postController (.ts)
 │   │   ├── models/              # User, Post (.ts)
 │   │   ├── routes/              # userRoutes, postRoutes (.ts)
 │   │   ├── app.ts
 │   │   └── server.ts
 │   └── tests/                   # Vitest + Supertest (.test.ts)
-└── docker-compose.yml           # MongoDB + server + client (nginx)
+├── docker-compose.yml           # MongoDB + server + client (nginx)
+└── vercel.json                  # All-in-one Vercel deployment configuration
 ```
 
 ## API
@@ -75,6 +78,13 @@ docker compose up --build
 
 - App: <http://localhost:5173>
 - API health: <http://localhost:5000/api/health>
+
+### Vercel (All-in-one Serverless)
+
+1. Import the repository into Vercel.
+2. In Project Settings → Environment Variables, set:
+   - `MONGO_URI`: `mongodb+srv://<username>:<password>@cluster0.xxxx.mongodb.net/travel_diaries?retryWrites=true&w=majority`
+3. Click **Deploy**. The frontend and backend run together under your Vercel domain.
 
 ### Locally
 
