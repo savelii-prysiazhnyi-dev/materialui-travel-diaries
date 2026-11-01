@@ -1,5 +1,6 @@
-import express, { type Request, type Response } from "express";
+import express, { type NextFunction, type Request, type Response } from "express";
 import cors from "cors";
+import { connectDB } from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
 
@@ -29,6 +30,17 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const ensureDbConnected = async (_req: Request, _res: Response, next: NextFunction): Promise<void> => {
+  if (process.env.VERCEL) {
+    try {
+      await connectDB();
+    } catch (error) {
+      return next(error);
+    }
+  }
+  next();
+};
+
 app.get("/api/health", (_req: Request, res: Response) => {
   res.status(200).json({
     status: "ok",
@@ -38,7 +50,7 @@ app.get("/api/health", (_req: Request, res: Response) => {
   });
 });
 
-app.use("/api/user", userRoutes);
-app.use("/api/posts", postRoutes);
+app.use("/api/user", ensureDbConnected, userRoutes);
+app.use("/api/posts", ensureDbConnected, postRoutes);
 
 export default app;

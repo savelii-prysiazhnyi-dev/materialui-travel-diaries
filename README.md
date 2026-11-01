@@ -21,8 +21,6 @@ The header navigation shows **Home · Diaries · Sign in** for guests and **Home
 
 ```text
 travel-diaries/
-├── api/
-│   └── index.ts                 # Vercel serverless function entry point
 ├── client/
 │   ├── public/hero.jpg          # Landing page image
 │   └── src/
@@ -44,7 +42,7 @@ travel-diaries/
 │   │   └── server.ts
 │   └── tests/                   # Vitest + Supertest (.test.ts)
 ├── docker-compose.yml           # MongoDB + server + client (nginx)
-└── vercel.json                  # All-in-one Vercel deployment configuration
+└── vercel.json                  # Multi-service Vercel deployment configuration
 ```
 
 ## API
