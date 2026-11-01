@@ -1,0 +1,51 @@
+services:
+  mongodb:
+    image: mongo:7-jammy
+    container_name: travel_diaries_db
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - travel-network
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: travel-diaries-server:latest
+    container_name: travel_diaries_server
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGO_URI=mongodb://mongodb:27017/travel_diaries
+      - CLIENT_ORIGIN=http://localhost:5173
+    depends_on:
+      - mongodb
+    networks:
+      - travel-network
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: travel-diaries-client:latest
+    container_name: travel_diaries_client
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - server
+    networks:
+      - travel-network
+
+volumes:
+  mongo_data:
+
+networks:
+  travel-network:
+    driver: bridge
